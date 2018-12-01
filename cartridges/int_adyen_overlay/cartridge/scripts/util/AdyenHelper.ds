@@ -242,14 +242,14 @@ var __AdyenHelper : Object = {
     },
 
     createCardObjectSF: function () {
-        var card = session.forms.billing.creditCardFields;
+        var card = session.forms.billing.paymentMethods.creditCard;
         var paymentMethodObject = {};
 
         paymentMethodObject['type'] = "scheme";
-        paymentMethodObject['encryptedCardNumber'] = card.adyenEncryptedCardNumber.value;
-        paymentMethodObject['encryptedExpiryMonth'] = card.adyenEncryptedExpiryMonth.value;
-        paymentMethodObject['encryptedExpiryYear'] = card.adyenEncryptedExpiryYear.value;
-        paymentMethodObject['encryptedSecurityCode'] = card.adyenEncryptedSecurityCode.value;
+        paymentMethodObject['encryptedCardNumber'] = card.encryptedCardNumber.value;
+        paymentMethodObject['encryptedExpiryMonth'] = card.encryptedExpiryMonth.value;
+        paymentMethodObject['encryptedExpiryYear'] = card.encryptedExpiryYear.value;
+        paymentMethodObject['encryptedSecurityCode'] = card.encryptedSecurityCode.value;
 
         return paymentMethodObject;
     },
