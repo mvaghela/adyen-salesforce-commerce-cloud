@@ -56,6 +56,10 @@ var __AdyenHelper : Object = {
         }
         return adyenService;
     },
+    
+    adyenLogTest : function(debugLine : String) {
+    	dwsystem.Logger.getLogger("Adyen", "adyen").error("Adyen Custom Log: {0}", debugLine);
+    },
 
     getAdyenMode : function () : String {
         var returnValue : String = "";
@@ -242,7 +246,14 @@ var __AdyenHelper : Object = {
     },
 
     createCardObjectSF: function () {
-        var card = session.forms.billing.paymentMethods.creditCard;
+    	
+    	if(session.forms.paymentinstruments) {
+        	card = session.forms.billing.paymentMethods.creditCard;
+        } else {
+        	// structure for SFRA
+        	card = session.forms.billing.creditCardFields;
+        }
+    	
         var paymentMethodObject = {};
 
         paymentMethodObject['type'] = "scheme";
